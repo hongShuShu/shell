@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>抽奖</title>
+
+	<style type="text/css">
+		#ul_content {
+			background-color: red;
+			width: 400px;
+			height: 470px;
+			list-style: none;
+		}
+		li {
+			background-color: green;
+			width: 100px;
+			height: 100px;
+			float: left;
+			text-align: center;
+			margin-top: 10px;
+			margin-left: 10px;
+			margin-bottom: 5px;
+			margin-right: 5px;
+		}
+		.gray {
+			background-color: blue;
+		}
+		#button {
+			width: 100px;
+			height: 50px;
+			text-decoration-color: red;
+		}
+	</style>
+
+
+
+</head>
+<body>
+	<div>
+	<ul id="ul_content">
+		<li>毁灭者（永久）</li>
+		<li>毁灭者（30天）</li>
+		<li>刀锋神兵（永久）</li>
+		<li>刀锋神兵（30天）</li>
+		<li>仙缘灵鹤（永久）</li>
+		<li>仙缘灵鹤（30天）</li>
+		<li>炽火金牛座椅(永久)</li>
+		<li>毁灭者1（永久）</li>
+		<li>毁灭者2（30天）</li>
+		<li>么么哒一个</li>
+		<li>金斧头</li>
+		<li>银斧头</li>
+	</ul>
+	<input type="button" id="button" onclick="buttonClick()" value="立即抽奖">
+</div>
+	
+</body>
+</html>
+
+
+<script type="text/javascript">
+		var t2 = null;
+
+		function buttonClick() {
+			var btn = document.getElementById("button");
+
+			if (t2) {
+				clearInterval(t2);
+				t2 = null;
+				btn.value = "立即抽奖";
+
+				var lis = document.getElementsByClassName("gray");
+
+				var curli = lis[0];
+				alert("恭喜您获得了："+ curli.outerText);
+
+			} else {
+				t2 = setInterval("btn_award();",200);
+				btn.value = "暂 停";
+			}
+		}
+
+		function btn_award() {
+			var lis = document.getElementsByTagName("li");
+			var num = Math.floor(Math.random()*10);
+			var curLi = lis[num];
+			for (var i = lis.length - 1; i >= 0; i--) {
+				lis[i].classList.remove("gray");
+			}
+			curLi.setAttribute("class","gray");
+		}
+	</script>

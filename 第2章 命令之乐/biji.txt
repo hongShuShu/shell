@@ -1,0 +1,15 @@
+1.用cat命令连接输出内容和文件内容
+例子：echo '0' | cat - 1.txt 
+
+2.查找大于2k的文件
+例子：find . -type f -size +2k
+
+3.查找当前目录下是txt的文件
+例子：find . ! -path '*.txt'
+
+4.统计代码行数
+例子：find . -type f -name '*.sh' -print0 | xargs -0 wc -l
+WC命令：输出指定文件的行数、单词数和字节数。
+  -l, --lines   输出行数统计
+  -w, --words   显示单词计数
+
